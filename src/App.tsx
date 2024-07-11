@@ -9,7 +9,6 @@ function App() {
   return (
     <div className={styles.container}>
       <DatePicker onSelect={selectDateHandler} />
-      {/* <DatePicker onSelect={selectDateHandler} selectedDate={new Date(2024, 1, 15)} /> */}
     </div>
   );
 }

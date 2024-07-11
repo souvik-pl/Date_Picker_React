@@ -10,7 +10,6 @@ function DatePicker(props: DatePickerProps) {
   const [monthInCalender, setMonthInCalender] = useState<number>(0);
   const [daysCount, setDaysCount] = useState<number>(0);
   const [yearInCalender, setYearInCalender] = useState<number>(0);
-
   const monthList = [
     "January",
     "February",
@@ -71,9 +70,21 @@ function DatePicker(props: DatePickerProps) {
     setIsCalenderOpen(!isCalenderOpen);
   }
 
-  function prevMonthClickHandler() {}
+  function prevMonthClickHandler() {
+    let month = monthInCalender - 1 < 0 ? 11 : monthInCalender - 1;
+    let year = monthInCalender - 1 < 0 ? yearInCalender - 1 : yearInCalender;
+    setDaysCountByMonth(month, year);
+    setMonthInCalender(month);
+    setYearInCalender(year);
+  }
 
-  function nextMonthClickHandler() {}
+  function nextMonthClickHandler() {
+    let month = monthInCalender + 1 > 11 ? 0 : monthInCalender + 1;
+    let year = monthInCalender + 1 > 11 ? yearInCalender + 1 : yearInCalender;
+    setDaysCountByMonth(month, year);
+    setMonthInCalender(month);
+    setYearInCalender(year);
+  }
 
   function getCSSClassesForDay(day: number): string {
     const isToday =
